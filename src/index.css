@@ -1,0 +1,51 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=general-sans@400,500,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html, body, #root { height: 100%; }
+html, body { overflow-x: clip; }
+
+/* HIG body floor: 16px / 1.5. Inter at weight 400 minimum. */
+html { font-size: 16px; }
+
+body {
+  @apply bg-cream text-ink-900 font-sans antialiased;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,158,58,0.10), transparent 40%),
+    radial-gradient(circle at 88% 82%, rgba(128,71,255,0.10), transparent 40%);
+  background-attachment: fixed;
+}
+
+.dark body { @apply bg-ink-900 text-cream; }
+
+@layer components {
+  /* Buttons enforce ≥44px touch target via min-h-[44px]. */
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 min-h-[44px] font-semibold transition-transform active:translate-y-[2px] disabled:opacity-50 disabled:pointer-events-none; }
+  .btn-primary { @apply btn bg-ink-900 text-cream shadow-pop-sm hover:-translate-y-[2px] hover:shadow-pop; }
+  .btn-accent { @apply btn bg-sun-400 text-ink-900 border-2 border-ink-900 shadow-pop-sm hover:-translate-y-[2px] hover:shadow-pop; }
+  .btn-ghost { @apply btn bg-transparent text-ink-900 hover:bg-ink-100; }
+  .card { @apply bg-white border-2 border-ink-900 rounded-3xl shadow-pop-sm; }
+  /* Pill: 12px caption, no tightening. */
+  .pill { @apply inline-flex items-center gap-2 rounded-full border-2 border-ink-900 bg-white px-3 py-1 text-xs font-semibold leading-4; }
+  /* ink-700 placeholder for ≥4.5:1 contrast on cream/white (ink-400 fails AA for body). */
+  .input { @apply w-full rounded-2xl border-2 border-ink-900 bg-white px-4 py-3 min-h-[44px] text-base text-ink-900 placeholder:text-ink-700/60 focus:outline-none focus:ring-4 focus:ring-grape-200; }
+  .label { @apply block text-sm font-semibold text-ink-800 mb-2; }
+  /* Display class no longer applies a blanket tracking-tight — tightening lives in the
+     fontSize tokens for sizes >24px only. Body Inter is never tightened. */
+  .display { @apply font-display; }
+  /* Use for any column of numeric cells (admin pipeline, prices, dates). */
+  .num { font-variant-numeric: tabular-nums; }
+  /* All-caps small labels need ≥0.05em tracking (any uppercase under 13px). */
+  .eyebrow { @apply text-xs font-semibold uppercase; letter-spacing: 0.06em; }
+  /* Body paragraph max measure ~65ch. */
+  .prose-cap { max-width: 65ch; }
+}
+
+::selection { background: #ffbe6a; color: #15151b; }

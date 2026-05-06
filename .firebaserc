@@ -1,0 +1,13 @@
+{
+  "projects": {
+    "default": "quotenest-demo"
+  },
+  "targets": {
+    "quotenest-demo": {
+      "hosting": {
+        "staging":    ["quotenest-staging"],
+        "production": ["quotenest"]
+      }
+    }
+  }
+}
