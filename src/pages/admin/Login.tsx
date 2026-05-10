@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { toast } from 'sonner';
 import { ArrowRight, Loader2, ShieldCheck } from 'lucide-react';
 import { auth } from '../../lib/firebase';
-import { Logo } from '../../components/Logo';
 
 const DEMO_LOGINS = [
   {
