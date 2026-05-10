@@ -65,20 +65,8 @@ export default function Login() {
 
   return (
     <div className="relative flex min-h-screen flex-col">
-      <header className="relative z-10 flex items-center justify-between border-b border-ink-200/60 bg-cream/80 px-6 py-4 backdrop-blur sm:px-10">
-        <div className="flex items-center gap-3">
-          <Logo />
-          <span className="pill bg-ink-100 text-xs">Admin</span>
-        </div>
-        <span className="text-xs text-ink-600">
-          Need help?{' '}
-          <a href="mailto:hello@letsbuildmyapp.com?subject=QuoteNest%20support" className="text-ink underline-offset-4 hover:underline">
-            Contact support
-          </a>
-        </span>
-      </header>
 
-      <main className="relative z-10 flex flex-1 items-center justify-center px-6 py-10">
+      <main className="relative z-10 flex flex-1 items-start justify-center px-6 pt-8 sm:pt-12 pb-10">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
